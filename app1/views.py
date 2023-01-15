@@ -1,7 +1,12 @@
 from django.shortcuts import render
+from .models import Article
+
+
 
 def index_page(request):
-    return render(request, 'main/index.html')
+    article = Article.objects.all()[0]
+    context = {'article': article}
+    return render(request, 'main/index.html', context)
 
 def base(requset):
     return render(requset, 'main/base.html')
