@@ -3,17 +3,49 @@
     nav-link active
 {% endblock %}
 {% block content %}
-<h1>GEOGRAPHY</h1>
+    <h1 style="text-align: center">Аналитика по городам для профессии Python-программист</h1>
+    <br><br>
+    <center><img style=" width: 750px; border-radius: 10px;" border="3px" src="/media/images/analysis2.png"></center>
+    <br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+            <table class="table table-bordered" align="left" width="540" border="1" bordercolor="black" cellpadding="5px">
+        <thead align="center">
+    <tr>
+      <th>{{heads2.data.0}}</th>
+      <th>{{heads2.data.1}} </th>
+    </tr>
+  </thead>
+        <tbody align="center">
+  {% for key, value in salary_by_cities.data.items %}
+   <tr>
+       <td> {{ key }} </td>
+       <td> {{ value }} </td>
+   </tr>
+  {%endfor%}
+  </tbody>
+</table>
+            </div>
+            <div class="col">
+            <table class="table table-bordered" align="right" width="500" border="1" bordercolor="black" cellpadding="5px">
+        <thead align="center">
+    <tr>
+      <th>{{heads2.data.0}}</th>
+      <th>{{heads2.data.4}} </th>
+    </tr>
+  </thead>
+        <tbody align="center">
+  {% for key, value in vacs_by_cities.data.items %}
+   <tr>
+       <td> {{ key }} </td>
+       <td> {% widthratio value 1 100 %}%  </td>
 
-  <p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
-
-<h2>Dynamic content</h2>
-
-  <p>The library has the following record counts:</p>
-  <ul>
-    <li><strong>Books:</strong> {{ num_books }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-    <li><strong>Authors:</strong> {{ num_authors }}</li>
-  </ul>
+   </tr>
+  {%endfor%}
+  </tbody>
+</table>
+            </div>
+        </div>
+</div>
 {% endblock %}

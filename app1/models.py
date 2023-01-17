@@ -6,3 +6,9 @@ class Article(models.Model):
     summary = models.CharField(max_length=255)
     full_text = models.TextField()
     pubdate = models.DateTimeField()
+
+    def __str__(self):
+        return self.title
+
+class Dict(models.Model):
+    data = models.JSONField()
