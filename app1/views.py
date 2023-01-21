@@ -35,7 +35,9 @@ def geography_page(requset):
     return render(requset, 'main/geography.html', context)
 
 def skills_page(requset):
-    return render(requset, 'main/skills.html',)
+    article = Article.objects.all()[3]
+    context = {'article': article}
+    return render(requset, 'main/skills.html', context)
 
 def lastvacancy_page(requset):
         url = 'https://api.hh.ru/vacancies?text=python+OR+%D0%BF%D0%B8%D1%82%D0%BE%D0%BD+OR+%D0%BF%D0%B0%D0%B9%D1%82%D0%BE%D0%BD&date_from=2022-12-01&date_to=2022-12-31'
