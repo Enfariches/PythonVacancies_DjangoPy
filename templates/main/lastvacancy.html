@@ -1,19 +1,56 @@
 {% extends "main/base.html" %}
+{% block title %}
+    Последние вакансии
+{% endblock %}
 {% block navig_btn_las %}
     nav-link active
 {% endblock %}
 {% block content %}
-<h1>LAST VACANCY</h1>
+    <h1>Последние вакансии</h1>
+    {% for vacancy in vacancies %}
+        <br>
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ vacancy.name }}</h4>
+                <p class="card-text">
+                    {{ vacancy.description|safe }}
+                <p><strong>Навыки</strong></p>
 
-  <p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
+                {% for skill in vacancy.key_skills %}
+                    {{ skill.name }},
+                {% endfor %}
+                <br>
+                <br>
+                <p><strong>Компания</strong></p>
 
-<h2>Dynamic content</h2>
+                {{ vacancy.employer.name }}
+                <br>
+                <br>
+                <p><strong>Оклад</strong></p>
 
-  <p>The library has the following record counts:</p>
-  <ul>
-    <li><strong>Books:</strong> {{ num_books }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-    <li><strong>Authors:</strong> {{ num_authors }}</li>
-  </ul>
+                {% if vacancy.salary %}
+                    {% if vacancy.salary.from %}От {{ vacancy.salary.from }}{% endif %}
+                    {% if vacancy.salary.to %}{% if vacancy.salary.from %}до {{ vacancy.salary.to }}{% else %}До
+                        {{ vacancy.salary.to }}{% endif %}{% endif %}
+                    {{ vacancy.salary.currency }}
+                {% else %}
+                    Нет данных
+                {% endif %}
+                <br>
+                <br>
+                <p><strong>Регион</strong></p>
+
+                {{ vacancy.area.name }}
+                <br>
+                <br>
+                <p><strong>Дата публикации</strong></p>
+
+                {{ vacancy.published_at|slice:":10" }}
+                </p>
+                <a href={{ vacancy.alternate_url }} class="btn btn-primary btn-sm">Перейти к вакансии</a>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
 {% endblock %}

@@ -3,20 +3,16 @@
     nav-link active
 {% endblock %}
 {% block content %}
-    <h1 style="text-align: center">Аналитика по городам для профессии Python-программист</h1>
-    <br><br>
-    <center><img style=" width: 750px; border-radius: 10px;" border="3px" src="/media/images/analysis2.png"></center>
-    <br><br><br><br>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-            <table class="table table-bordered" align="left" width="540" border="1" bordercolor="black" cellpadding="5px">
+
+    {{ article.full_text|safe }}
+
+    <table class="table table-bordered" align="left" width="540" border="1" bordercolor="black" cellpadding="5px">
         <thead align="center">
     <tr>
       <th>{{heads2.data.0}}</th>
       <th>{{heads2.data.1}} </th>
     </tr>
-  </thead>
+        </thead>
         <tbody align="center">
   {% for key, value in salary_by_cities.data.items %}
    <tr>
@@ -24,7 +20,7 @@
        <td> {{ value }} </td>
    </tr>
   {%endfor%}
-  </tbody>
+        </tbody>
 </table>
             </div>
             <div class="col">

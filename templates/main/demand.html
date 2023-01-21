@@ -4,10 +4,9 @@
     nav-link active
 {% endblock %}
 {% block content %}
-<h1 style="text-align: center">Аналитика по годам для профессии Python-программист</h1>
-    <br><br>
-    <center><img style=" width: 750px; border-radius: 10px;" border="3px" src="/media/images/analysis1.png"></center>
-    <br><br><br><br>
+
+    {{ article.full_text|safe }}
+
     <table class="table table-bordered" align="center" width="1080" border="1" bordercolor="black" cellpadding="5px">
   <thead align="center">
     <tr>
