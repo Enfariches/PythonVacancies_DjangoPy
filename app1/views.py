@@ -6,7 +6,7 @@ import requests
 
 
 def index_page(request):
-    article = Article.objects.all()[0]
+    article = Article.objects.get(title='main_page')
     context = {'article': article}
     return render(request, 'main/index.html', context)
 
@@ -14,28 +14,28 @@ def base(requset):
     return render(requset, 'main/base.html')
 
 def demand_page(requset):
-    salary_by_years = Dict.objects.all()[0]
-    vacs_by_years = Dict.objects.all()[1]
-    vac_salary_by_years = Dict.objects.all()[2]
-    vac_counts_by_years = Dict.objects.all()[3]
-    heads1 = Dict.objects.all()[6]
-    article = Article.objects.all()[1]
+    salary_by_years = Dict.objects.get(title='salary_by_years')
+    vacs_by_years = Dict.objects.get(title='vacs_by_years')
+    vac_salary_by_years = Dict.objects.get(title='vac_salary_by_years')
+    vac_counts_by_years = Dict.objects.get(title='vac_counts_by_years')
+    heads1 = Dict.objects.get(title='heads1')
+    article = Article.objects.get(title='demand_page')
     context = {'salary_by_years': salary_by_years, 'vacs_by_years': vacs_by_years,
                'vac_salary_by_years': vac_salary_by_years, 'vac_counts_by_years': vac_counts_by_years,
                'heads1': heads1, 'article': article}
     return render(requset, 'main/demand.html', context)
 
 def geography_page(requset):
-    heads2 = Dict.objects.all()[6]
-    salary_by_cities = Dict.objects.all()[4]
-    vacs_by_cities = Dict.objects.all()[5]
-    article = Article.objects.all()[2]
+    heads2 = Dict.objects.get(title='heads2')
+    salary_by_cities = Dict.objects.get(title='salary_by_cities')
+    vacs_by_cities = Dict.objects.get(title='vacs_by_cities')
+    article = Article.objects.get(title='geography_page')
     context = {"heads2": heads2, "salary_by_cities": salary_by_cities, "vacs_by_cities": vacs_by_cities,
                'article': article}
     return render(requset, 'main/geography.html', context)
 
 def skills_page(requset):
-    article = Article.objects.all()[3]
+    article = Article.objects.get(title='skills_page')
     context = {'article': article}
     return render(requset, 'main/skills.html', context)
 
