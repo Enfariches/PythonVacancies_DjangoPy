@@ -11,4 +11,8 @@ class Article(models.Model):
         return self.title
 
 class Dict(models.Model):
+    title = models.CharField(max_length=255, default='default title')
     data = models.JSONField()
+
+    def __str__(self):
+        return self.title

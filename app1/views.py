@@ -26,7 +26,7 @@ def demand_page(requset):
     return render(requset, 'main/demand.html', context)
 
 def geography_page(requset):
-    heads2 = Dict.objects.all()[9]
+    heads2 = Dict.objects.all()[6]
     salary_by_cities = Dict.objects.all()[4]
     vacs_by_cities = Dict.objects.all()[5]
     article = Article.objects.all()[2]
