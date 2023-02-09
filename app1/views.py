@@ -13,6 +13,9 @@ def index_page(request):
 def base(requset):
     return render(requset, 'main/base.html')
 
+def form_page(requset):
+    return render(requset, 'main/form.html')
+
 def demand_page(requset):
     salary_by_years = Dict.objects.get(title='salary_by_years')
     vacs_by_years = Dict.objects.get(title='vacs_by_years')
@@ -40,7 +43,7 @@ def skills_page(requset):
     return render(requset, 'main/skills.html', context)
 
 def lastvacancy_page(requset):
-        url = 'https://api.hh.ru/vacancies?text=python+OR+%D0%BF%D0%B8%D1%82%D0%BE%D0%BD+OR+%D0%BF%D0%B0%D0%B9%D1%82%D0%BE%D0%BD&date_from=2022-12-01&date_to=2022-12-31'
+        url = 'https://api.hh.ru/vacancies?text=python+OR+%D0%BF%D0%B8%D1%82%D0%BE%D0%BD+OR+%D0%BF%D0%B0%D0%B9%D1%82%D0%BE%D0%BD&date_from=2022-12-31&date_to=2022-12-31'
         response = requests.get(url).text
         vacancies = sorted(json.loads(response)["items"], key=lambda vac: int(vac['published_at'][8:10]), reverse=True)[
                     :10]

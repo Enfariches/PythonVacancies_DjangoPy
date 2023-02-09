@@ -19,7 +19,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from app1.views import index_page, demand_page, geography_page, skills_page, lastvacancy_page
+from app1.views import index_page, demand_page, geography_page, skills_page, lastvacancy_page,form_page
 
 # from app1.views import base
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path('geography', geography_page),
     path('skills', skills_page),
     path('lastvacancy', lastvacancy_page),
+    path('form', form_page),
 ]
 
 if settings.DEBUG:
